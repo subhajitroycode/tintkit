@@ -21,8 +21,8 @@ const Header = () => {
   };
 
   return (
-    <div className="flex justify-between items-center py-2 px-4 bg-neutral-100 dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-700">
-      <div className="w-48">
+    <header className="flex justify-between items-center py-2 pl-6 pr-4 bg-neutral-100 dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-700">
+      <div className="w-40">
         <img
           src={isDarkMode ? "/logo-white.png" : "/logo-black.png"}
           alt="logo"
@@ -71,7 +71,7 @@ const Header = () => {
           )}
         </button>
       </div>
-    </div>
+    </header>
   );
 };
 
