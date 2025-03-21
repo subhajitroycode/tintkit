@@ -7,17 +7,20 @@ const initialState = {
     name: "primary",
     color: null,
     scale: [],
+    baseScale: null,
   },
   secondaryColor: {
     name: "secondary",
     color: null,
     scale: [],
+    baseScale: null,
     isAdded: false,
   },
   tertiaryColor: {
     name: "tertiary",
     color: null,
     scale: [],
+    baseScale: null,
     isAdded: false,
   },
 };
@@ -31,6 +34,7 @@ const reduce = (state, action) => {
           name: action.payload.name,
           color: action.payload.color,
           scale: action.payload.scale,
+          baseScale: action.payload.baseScale,
         },
       };
     case "SET_SECONDARY_COLOR":
@@ -40,6 +44,7 @@ const reduce = (state, action) => {
           name: action.payload.name,
           color: action.payload.color,
           scale: action.payload.scale,
+          baseScale: action.payload.baseScale,
           isAdded: true,
         },
       };
@@ -50,6 +55,7 @@ const reduce = (state, action) => {
           name: action.payload.name,
           color: action.payload.color,
           scale: action.payload.scale,
+          baseScale: action.payload.baseScale,
           isAdded: true,
         },
       };
@@ -60,6 +66,7 @@ const reduce = (state, action) => {
           name: "secondary",
           color: null,
           scale: [],
+          baseScale: null,
           isAdded: false,
         },
       };
@@ -70,6 +77,7 @@ const reduce = (state, action) => {
           name: "tertiary",
           color: null,
           scale: [],
+          baseScale: null,
           isAdded: false,
         },
       };
@@ -80,13 +88,10 @@ const reduce = (state, action) => {
 
 const ColorProvider = ({ children }) => {
   const scaleValues = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
-  const [baseScale, setBaseScale] = useState(null);
   const [state, dispatch] = useReducer(reduce, initialState);
 
   return (
-    <ColorContext.Provider
-      value={{ scaleValues, baseScale, setBaseScale, state, dispatch }}
-    >
+    <ColorContext.Provider value={{ scaleValues, state, dispatch }}>
       {children}
     </ColorContext.Provider>
   );

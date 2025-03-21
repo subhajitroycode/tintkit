@@ -1,26 +1,43 @@
-import React from "react";
+import React, { useContext } from "react";
 import CustomScaleDropdown from "./CustomScaleDropdown";
+import { ColorContext } from "../contexts/colorContext";
 
-const ColorInput = () => {
+const ColorInput = ({ colorType = "primary" }) => {
+  const { state, dispatch } = useContext(ColorContext);
+
+  const colorData = state[`${colorType}Color`];
+  const actionType = `SET_${colorType.toUpperCase()}_COLOR`;
+
   return (
-    <div>
+    <div className="mb-10">
       <label
-        htmlFor="color-name"
-        className="block text-sm font-medium text-neutral-700 dark:text-neutral-300"
+        htmlFor={colorType}
+        className="block mb-0.5 text-sm font-medium text-neutral-700 dark:text-neutral-300"
       >
         Color Name:
       </label>
       <input
         type="text"
-        name="color-name"
-        id="color-name"
-        className="w-full p-2 mt-0.5 border border-gray-300 rounded-md"
+        name={colorType}
+        id={colorType}
+        className="w-full p-2 border border-gray-300 rounded-md"
         placeholder="Enter color name"
+        value={colorData.name}
+        onChange={(e) => {
+          dispatch({
+            type: actionType,
+            payload: {
+              name: e.target.value,
+              color: colorData.color,
+              scale: colorData.scale,
+            },
+          });
+        }}
       />
       <div className="mt-4">
         <label
-          htmlFor="color"
-          className="block mb-1 text-sm font-medium text-neutral-700 dark:text-neutral-300"
+          htmlFor={`${colorType}-color`}
+          className="block mb-0.5 text-sm font-medium text-neutral-700 dark:text-neutral-300"
         >
           Choose your color:
         </label>
@@ -28,20 +45,41 @@ const ColorInput = () => {
           <div className="relative w-5 h-5 overflow-hidden rounded-full">
             <input
               type="color"
+              id={`${colorType}-color`}
+              name={`${colorType}-color`}
               className="absolute top-0.5 left-0 w-8 h-8 -ml-2 -mt-2 rounded-full cursor-pointer"
+              value={colorData.color}
+              onChange={(e) => {
+                dispatch({
+                  type: actionType,
+                  payload: {
+                    name: colorData.name,
+                    color: e.target.value,
+                    scale: colorData.scale,
+                  },
+                });
+              }}
             />
           </div>
           <input
             type="text"
             className="w-full p-2 border-none outline-none"
             placeholder="Enter hex code"
+            value={colorData.color}
+            onChange={(e) => {
+              dispatch({
+                type: actionType,
+                payload: {
+                  name: colorData.name,
+                  color: e.target.value,
+                  scale: colorData.scale,
+                },
+              });
+            }}
           />
         </div>
       </div>
-      <CustomScaleDropdown />
-      <button className="mt-4 mb-6 w-full bg-neutral-800 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-800 py-2 rounded-full cursor-pointer">
-        + Add secondary color
-      </button>
+      <CustomScaleDropdown colorType={colorType} />
     </div>
   );
 };

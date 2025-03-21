@@ -8,8 +8,8 @@ function App() {
       <Header />
       <ColorProvider>
         <main className="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100">
-          <div className="flex py-4">
-            <div>
+          <div className="flex">
+            <div className="pt-4 pr-4 border-r border-neutral-200 dark:border-neutral-700">
               <ControlPanel />
             </div>
             <div className="flex-grow">
