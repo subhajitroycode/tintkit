@@ -5,22 +5,22 @@ const ColorContext = createContext();
 const initialState = {
   primaryColor: {
     name: "primary",
-    color: null,
+    color: undefined,
     scale: [],
-    baseScale: null,
+    baseScale: undefined,
   },
   secondaryColor: {
     name: "secondary",
-    color: null,
+    color: undefined,
     scale: [],
-    baseScale: null,
+    baseScale: undefined,
     isAdded: false,
   },
   tertiaryColor: {
     name: "tertiary",
-    color: null,
+    color: undefined,
     scale: [],
-    baseScale: null,
+    baseScale: undefined,
     isAdded: false,
   },
 };
@@ -60,16 +60,31 @@ const reduce = (state, action) => {
         },
       };
     case "RESET_SECONDARY_COLOR":
-      return {
-        ...state,
-        secondaryColor: {
-          name: "secondary",
-          color: null,
-          scale: [],
-          baseScale: null,
-          isAdded: false,
-        },
-      };
+      if (state.tertiaryColor.isAdded) {
+        return {
+          ...state,
+          secondaryColor: {
+            ...state.tertiaryColor,
+            name: state.tertiaryColor.name,
+          },
+          tertiaryColor: {
+            name: "tertiary",
+            color: null,
+            scale: [],
+            isAdded: false,
+          },
+        };
+      } else {
+        return {
+          ...state,
+          secondaryColor: {
+            name: "secondary",
+            color: null,
+            scale: [],
+            isAdded: false,
+          },
+        };
+      }
     case "RESET_TERTIARY_COLOR":
       return {
         ...state,

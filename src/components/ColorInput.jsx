@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import CustomScaleDropdown from "./CustomScaleDropdown";
 import { ColorContext } from "../contexts/colorContext";
+import { FaTrash } from "react-icons/fa6";
 
 const ColorInput = ({ colorType = "primary" }) => {
   const { state, dispatch } = useContext(ColorContext);
@@ -9,7 +10,23 @@ const ColorInput = ({ colorType = "primary" }) => {
   const actionType = `SET_${colorType.toUpperCase()}_COLOR`;
 
   return (
-    <div className="mb-10">
+    <div className="mb-8 p-4 border border-neutral-200 dark:border-neutral-600 rounded-lg">
+      <div className="flex justify-between items-center mb-2">
+        <h3 className="font-semibold">
+          {colorType.charAt(0).toUpperCase() + colorType.slice(1)} Color
+        </h3>
+        {colorType !== "primary" && (
+          <button
+            className="text-red-500 hover:text-red-700 cursor-pointer"
+            onClick={() =>
+              dispatch({ type: `RESET_${colorType.toUpperCase()}_COLOR` })
+            }
+          >
+            <FaTrash />
+          </button>
+        )}
+      </div>
+
       <label
         htmlFor={colorType}
         className="block mb-0.5 text-sm font-medium text-neutral-700 dark:text-neutral-300"

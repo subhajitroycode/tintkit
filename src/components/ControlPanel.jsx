@@ -20,7 +20,7 @@ const ControlPanel = () => {
           <ColorInput colorType="secondary" />
         ) : (
           <button
-            className="-mt-2 mb-6 w-full bg-neutral-800 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-800 py-2 rounded-full cursor-pointer"
+            className="mb-6 w-full bg-neutral-800 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-800 py-2 rounded-full cursor-pointer"
             onClick={() =>
               dispatch({
                 type: "SET_SECONDARY_COLOR",
