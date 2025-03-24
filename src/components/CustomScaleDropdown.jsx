@@ -36,7 +36,7 @@ const CustomScaleDropdown = ({ colorType = "primary" }) => {
       <div className="relative" ref={dropdownref}>
         <button
           type="button"
-          className="w-full flex items-center justify-between p-2 bg-transparent border border-neutral-300 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-600 focus:outline-2 focus:outline-neutral-900 dark:focus:outline-1 dark:focus:outline-neutral-200"
+          className="w-full flex items-center justify-between p-2 bg-transparent border border-neutral-300 dark:border-neutral-500 rounded-md hover:bg-neutral-200 dark:hover:bg-neutral-600 focus:outline-2 focus:outline-neutral-900 dark:focus:outline-1 dark:focus:outline-neutral-200"
           onClick={() => setIsChevronOpen(!isChevronOpen)}
         >
           <span>{colorData.baseScale}</span>

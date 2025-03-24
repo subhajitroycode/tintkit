@@ -1,24 +1,28 @@
 import { createContext, useReducer, useState } from "react";
+import { autoBaseScale, generateRandomHexColor } from "../utils/color";
 
 const ColorContext = createContext();
+
+const primaryHexColor = generateRandomHexColor();
+const primaryBaseScale = autoBaseScale(primaryHexColor);
 
 const initialState = {
   primaryColor: {
     name: "primary",
-    color: undefined,
+    color: primaryHexColor,
     scale: [],
-    baseScale: undefined,
+    baseScale: primaryBaseScale,
   },
   secondaryColor: {
     name: "secondary",
-    color: undefined,
+    color: "",
     scale: [],
     baseScale: undefined,
     isAdded: false,
   },
   tertiaryColor: {
     name: "tertiary",
-    color: undefined,
+    color: "",
     scale: [],
     baseScale: undefined,
     isAdded: false,
@@ -69,8 +73,9 @@ const reduce = (state, action) => {
           },
           tertiaryColor: {
             name: "tertiary",
-            color: null,
+            color: "",
             scale: [],
+            baseScale: undefined,
             isAdded: false,
           },
         };
@@ -79,8 +84,9 @@ const reduce = (state, action) => {
           ...state,
           secondaryColor: {
             name: "secondary",
-            color: null,
+            color: "",
             scale: [],
+            baseScale: undefined,
             isAdded: false,
           },
         };
@@ -90,9 +96,9 @@ const reduce = (state, action) => {
         ...state,
         tertiaryColor: {
           name: "tertiary",
-          color: null,
+          color: "",
           scale: [],
-          baseScale: null,
+          baseScale: undefined,
           isAdded: false,
         },
       };

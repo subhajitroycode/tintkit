@@ -1,9 +1,25 @@
 import React, { useContext } from "react";
 import ColorInput from "./ColorInput";
 import { ColorContext } from "../contexts/colorContext";
+import { autoBaseScale, generateRandomHexColor } from "../utils/color";
 
 const ControlPanel = () => {
   const { state, dispatch } = useContext(ColorContext);
+
+  const handleClick = (name) => {
+    const color = generateRandomHexColor();
+    const baseScale = autoBaseScale(color);
+
+    dispatch({
+      type: `SET_${name}_COLOR`,
+      payload: {
+        name: name.toLowerCase(),
+        color,
+        scale: [],
+        baseScale,
+      },
+    });
+  };
 
   return (
     <div className="w-96 ml-6">
@@ -20,13 +36,8 @@ const ControlPanel = () => {
           <ColorInput colorType="secondary" />
         ) : (
           <button
-            className="mb-6 w-full bg-neutral-800 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-800 py-2 rounded-full cursor-pointer"
-            onClick={() =>
-              dispatch({
-                type: "SET_SECONDARY_COLOR",
-                payload: { name: "secondary", color: null, scale: [] },
-              })
-            }
+            className="mb-6 w-full bg-neutral-800 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-800 py-2 rounded-full cursor-pointer hover:bg-neutral-700 dark:hover:bg-neutral-300"
+            onClick={() => handleClick("SECONDARY")}
           >
             + Add secondary color
           </button>
@@ -38,13 +49,8 @@ const ControlPanel = () => {
               <ColorInput colorType="tertiary" />
             ) : (
               <button
-                className="-mt-2 mb-6 w-full bg-neutral-800 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-800 py-2 rounded-full cursor-pointer"
-                onClick={() =>
-                  dispatch({
-                    type: "SET_TERTIARY_COLOR",
-                    payload: { name: "tertiary", color: null, scale: [] },
-                  })
-                }
+                className="-mt-2 mb-6 w-full bg-neutral-800 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-800 py-2 rounded-full cursor-pointer hover:bg-neutral-700 dark:hover:bg-neutral-300"
+                onClick={() => handleClick("TERTIARY")}
               >
                 + Add tertiary color
               </button>
