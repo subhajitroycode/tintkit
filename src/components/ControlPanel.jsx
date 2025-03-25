@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import ColorInput from "./ColorInput";
 import { ColorContext } from "../contexts/colorContext";
 import {
-  autoBaseScale,
+  determineBaseScale,
   generateRandomHexColor,
   generateScale,
 } from "../utils/color";
@@ -12,7 +12,7 @@ const ControlPanel = () => {
 
   const handleClick = (name) => {
     const color = generateRandomHexColor();
-    const baseScale = autoBaseScale(color);
+    const baseScale = determineBaseScale(color);
     const scale = generateScale(color);
 
     dispatch({

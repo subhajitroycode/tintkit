@@ -6,7 +6,7 @@ const generateRandomHexColor = () => {
   return hexString;
 };
 
-const autoBaseScale = (color) => {
+const determineBaseScale = (color) => {
   const { l } = hexToHSL(color);
 
   if (l < 15) return 950;
@@ -23,7 +23,7 @@ const autoBaseScale = (color) => {
 };
 
 const generateScale = (color, baseScale) => {
-  if (!baseScale) baseScale = autoBaseScale(color);
+  if (!baseScale) baseScale = determineBaseScale(color);
 
   const hsl = hexToHSL(color);
   const scaleValues = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
@@ -52,4 +52,4 @@ const generateScale = (color, baseScale) => {
   return scales;
 };
 
-export { generateRandomHexColor, autoBaseScale, generateScale };
+export { generateRandomHexColor, determineBaseScale, generateScale };

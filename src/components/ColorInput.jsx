@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import CustomScaleDropdown from "./CustomScaleDropdown";
 import { ColorContext } from "../contexts/colorContext";
 import { FaTrash } from "react-icons/fa6";
-import { autoBaseScale, generateScale } from "../utils/color";
+import { determineBaseScale, generateScale } from "../utils/color";
 
 const ColorInput = ({ colorType = "primary" }) => {
   const { state, dispatch } = useContext(ColorContext);
@@ -75,7 +75,7 @@ const ColorInput = ({ colorType = "primary" }) => {
                     name: colorData.name,
                     color: e.target.value,
                     scale: generateScale(e.target.value),
-                    baseScale: autoBaseScale(e.target.value),
+                    baseScale: determineBaseScale(e.target.value),
                   },
                 });
               }}
@@ -93,7 +93,7 @@ const ColorInput = ({ colorType = "primary" }) => {
                   name: colorData.name,
                   color: e.target.value,
                   scale: generateScale(e.target.value),
-                  baseScale: autoBaseScale(e.target.value),
+                  baseScale: determineBaseScale(e.target.value),
                 },
               });
             }}
