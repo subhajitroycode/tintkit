@@ -1,5 +1,9 @@
 import { createContext, useReducer, useState } from "react";
-import { autoBaseScale, generateRandomHexColor } from "../utils/color";
+import {
+  autoBaseScale,
+  generateRandomHexColor,
+  generateScale,
+} from "../utils/color";
 
 const ColorContext = createContext();
 
@@ -10,7 +14,7 @@ const initialState = {
   primaryColor: {
     name: "primary",
     color: primaryHexColor,
-    scale: [],
+    scale: generateScale(primaryHexColor),
     baseScale: primaryBaseScale,
   },
   secondaryColor: {

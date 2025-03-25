@@ -1,4 +1,4 @@
-import { hexToHSL } from "./colorConverter";
+import { hexToHSL, hslToHex } from "./colorConverter";
 
 const generateRandomHexColor = () => {
   const hexString = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
@@ -22,4 +22,34 @@ const autoBaseScale = (color) => {
   return 50;
 };
 
-export { generateRandomHexColor, autoBaseScale };
+const generateScale = (color, baseScale) => {
+  if (!baseScale) baseScale = autoBaseScale(color);
+
+  const hsl = hexToHSL(color);
+  const scaleValues = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+  const scales = {};
+  const baseIndex = scaleValues.indexOf(baseScale);
+
+  // Base color
+  scales[baseScale] = color;
+
+  // For lighter shades
+  for (let i = baseIndex - 1; i >= 0; i--) {
+    const step = baseIndex - i;
+    const adjustedL = Math.min(98, hsl.l + step * 8);
+    const adjustedS = Math.max(hsl.s - step * 5, 10);
+    scales[scaleValues[i]] = hslToHex(hsl.h, adjustedS, adjustedL);
+  }
+
+  // For darker shades
+  for (let i = baseIndex + 1; i < scaleValues.length; i++) {
+    const step = i - baseIndex;
+    const adjustedL = Math.max(5, hsl.l - step * 8);
+    const adjustedS = Math.min(hsl.s + step * 2, 100);
+    scales[scaleValues[i]] = hslToHex(hsl.h, adjustedS, adjustedL);
+  }
+
+  return scales;
+};
+
+export { generateRandomHexColor, autoBaseScale, generateScale };

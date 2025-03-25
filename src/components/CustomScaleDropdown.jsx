@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
 import { ColorContext } from "../contexts/colorContext";
+import { generateScale } from "../utils/color";
 
 const CustomScaleDropdown = ({ colorType = "primary" }) => {
   const [isChevronOpen, setIsChevronOpen] = useState(false);
@@ -64,7 +65,7 @@ const CustomScaleDropdown = ({ colorType = "primary" }) => {
                       payload: {
                         name: colorData.name,
                         color: colorData.color,
-                        scale: colorData.scale,
+                        scale: generateScale(colorData.color, value),
                         baseScale: value,
                       },
                     })
