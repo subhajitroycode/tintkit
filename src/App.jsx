@@ -1,4 +1,4 @@
-import ControlPanel from "./components/ControlPanel";
+import ControlPanel from "./components/Dashboard/ControlPanel";
 import Header from "./components/Header";
 import { ColorProvider } from "./contexts/colorContext";
 

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import CustomScaleDropdown from "./CustomScaleDropdown";
-import { ColorContext } from "../contexts/colorContext";
+import { ColorContext } from "../../contexts/colorContext";
 import { FaTrash } from "react-icons/fa6";
-import { determineBaseScale, generateScale } from "../utils/color";
+import { determineBaseScale, generateScale } from "../../utils/color";
 
 const ColorInput = ({ colorType = "primary" }) => {
   const { state, dispatch } = useContext(ColorContext);

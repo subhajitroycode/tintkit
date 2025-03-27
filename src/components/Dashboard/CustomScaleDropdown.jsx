@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { IoChevronDown } from "react-icons/io5";
-import { ColorContext } from "../contexts/colorContext";
-import { generateScale } from "../utils/color";
+import { ColorContext } from "../../contexts/colorContext";
+import { generateScale } from "../../utils/color";
 
 const CustomScaleDropdown = ({ colorType = "primary" }) => {
   const [isChevronOpen, setIsChevronOpen] = useState(false);

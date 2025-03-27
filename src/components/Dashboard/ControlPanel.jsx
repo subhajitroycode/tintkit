@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import ColorInput from "./ColorInput";
-import { ColorContext } from "../contexts/colorContext";
+import { ColorContext } from "../../contexts/colorContext";
 import {
   determineBaseScale,
   generateRandomHexColor,
   generateScale,
-} from "../utils/color";
+} from "../../utils/color";
 
 const ControlPanel = () => {
   const { state, dispatch } = useContext(ColorContext);
