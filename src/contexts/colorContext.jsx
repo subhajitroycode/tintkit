@@ -20,14 +20,14 @@ const initialState = {
   secondaryColor: {
     name: "secondary",
     color: "",
-    scale: [],
+    scale: {},
     baseScale: undefined,
     isAdded: false,
   },
   tertiaryColor: {
     name: "tertiary",
     color: "",
-    scale: [],
+    scale: {},
     baseScale: undefined,
     isAdded: false,
   },
@@ -78,7 +78,7 @@ const reduce = (state, action) => {
           tertiaryColor: {
             name: "tertiary",
             color: "",
-            scale: [],
+            scale: {},
             baseScale: undefined,
             isAdded: false,
           },
@@ -89,7 +89,7 @@ const reduce = (state, action) => {
           secondaryColor: {
             name: "secondary",
             color: "",
-            scale: [],
+            scale: {},
             baseScale: undefined,
             isAdded: false,
           },
@@ -101,7 +101,7 @@ const reduce = (state, action) => {
         tertiaryColor: {
           name: "tertiary",
           color: "",
-          scale: [],
+          scale: {},
           baseScale: undefined,
           isAdded: false,
         },

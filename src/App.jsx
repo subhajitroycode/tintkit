@@ -1,5 +1,6 @@
 import ControlPanel from "./components/Dashboard/ControlPanel";
 import Header from "./components/Header";
+import ColorDisplay from "./components/ScaleDisplay/ColorDisplay";
 import { ColorProvider } from "./contexts/colorContext";
 
 function App() {
@@ -12,8 +13,8 @@ function App() {
             <div className="pt-4 pr-4 border-r border-neutral-200 dark:border-neutral-700">
               <ControlPanel />
             </div>
-            <div className="flex-grow">
-              <p>color scale display</p>
+            <div className="flex-grow flex justify-center">
+              <ColorDisplay />
             </div>
           </div>
         </main>
