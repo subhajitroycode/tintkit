@@ -18,7 +18,7 @@ const ColorScale = ({ colorType = "primary" }) => {
   return (
     <div className="mb-5">
       <div className="flex justify-between">
-        <h3>
+        <h3 className="font-medium">
           Color:{" "}
           {colorData.name.trim().slice(0, 1).toUpperCase() +
             colorData.name.trim().slice(1)}

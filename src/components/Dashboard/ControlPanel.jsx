@@ -41,7 +41,7 @@ const ControlPanel = () => {
           <ColorInput colorType="secondary" />
         ) : (
           <button
-            className="mb-6 w-full bg-neutral-800 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-800 py-2 rounded-full cursor-pointer hover:bg-neutral-700 dark:hover:bg-neutral-300"
+            className="mb-6 w-full bg-neutral-800 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-800 py-2 rounded-full cursor-pointer hover:bg-neutral-700 dark:hover:bg-neutral-300 font-medium"
             onClick={() => handleClick("SECONDARY")}
           >
             + Add secondary color
@@ -54,7 +54,7 @@ const ControlPanel = () => {
               <ColorInput colorType="tertiary" />
             ) : (
               <button
-                className="-mt-2 mb-6 w-full bg-neutral-800 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-800 py-2 rounded-full cursor-pointer hover:bg-neutral-700 dark:hover:bg-neutral-300"
+                className="-mt-2 mb-6 w-full bg-neutral-800 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-800 py-2 rounded-full cursor-pointer hover:bg-neutral-700 dark:hover:bg-neutral-300 font-medium"
                 onClick={() => handleClick("TERTIARY")}
               >
                 + Add tertiary color
