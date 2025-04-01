@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Buttons from "./Buttons";
 import Cards from "./Cards";
 import Charts from "./Charts";
+import ButtonShowcase from "./Buttons/ButtonShowcase";
 
 const TabComponent = () => {
   const [activeTab, setActiveTab] = useState("buttons");
 
   const tabContent = {
-    buttons: <Buttons />,
+    buttons: <ButtonShowcase />,
     cards: <Cards />,
     charts: <Charts />,
   };
@@ -23,7 +23,7 @@ const TabComponent = () => {
             className={`py-2 px-4 rounded-md transition-all duration-200 font-medium
             ${
               tab === activeTab
-                ? "bg-neutral-800 dark:bg-neutral-200 text-neutral-50 dark:text-neutral-950 shadow-md"
+                ? "bg-neutral-700 dark:bg-neutral-300 text-neutral-50 dark:text-neutral-950 shadow-md"
                 : "bg-neutral-200 dark:bg-neutral-700/50 text-neutral-700 dark:text-neutral-100 hover:bg-neutral-300 hover:dark:bg-neutral-600"
             }`}
             onClick={() => setActiveTab(tab)}
@@ -32,7 +32,7 @@ const TabComponent = () => {
           </button>
         ))}
       </div>
-      <div>{tabContent[activeTab]}</div>
+      <div className="pb-6">{tabContent[activeTab]}</div>
     </div>
   );
 };
