@@ -16,7 +16,7 @@ const TabComponent = () => {
 
   return (
     <div className="mt-4">
-      <div className="flex space-x-4 mb-6">
+      <div className="flex space-x-4 mb-6 ml-4">
         {tabArr.map((tab) => (
           <button
             key={tab}

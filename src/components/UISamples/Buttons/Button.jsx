@@ -23,20 +23,20 @@ const Button = ({ variant, state, colorType = "primary" }) => {
     Normal: {
       Default: {
         backgroundColor: colorScale[500],
-        textColor: "white",
-        shadow: "",
+        textColor: "",
+        shadow: `0 4px 6px ${hexToRgba(colorScale[950], 0.2)}`,
         border: "none",
       },
       Hover: {
         backgroundColor: colorScale[600],
-        textColor: "white",
-        shadow: "",
+        textColor: "",
+        shadow: `0 4px 6px ${hexToRgba(colorScale[950], 0.2)}`,
         border: "none",
       },
       Active: {
         backgroundColor: colorScale[700],
-        textColor: "white",
-        shadow: "",
+        textColor: "",
+        shadow: `0 4px 6px ${hexToRgba(colorScale[950], 0.2)}`,
         border: "none",
       },
       Disabled: DISABLED_STYLE,
@@ -97,25 +97,25 @@ const Button = ({ variant, state, colorType = "primary" }) => {
         backgroundColor: "transparent",
         textColor: colorScale[600],
         shadow: "",
-        border: `1px solid ${colorScale[500]}`,
+        border: `2px solid ${colorScale[500]}`,
       },
       Hover: {
         backgroundColor: colorScale[100],
         textColor: colorScale[700],
         shadow: "",
-        border: `1px solid ${colorScale[600]}`,
+        border: `2px solid ${colorScale[600]}`,
       },
       Active: {
         backgroundColor: colorScale[200],
         textColor: colorScale[800],
         shadow: "",
-        border: `1px solid ${colorScale[700]}`,
+        border: `2px solid ${colorScale[700]}`,
       },
       Disabled: {
         backgroundColor: "transparent",
         textColor: colorScale[300],
         shadow: "",
-        border: `1px solid ${colorScale[200]}`,
+        border: `2px solid ${colorScale[200]}`,
       },
     },
   };
@@ -132,7 +132,7 @@ const Button = ({ variant, state, colorType = "primary" }) => {
   return (
     <button
       style={style}
-      className="py-3 px-6 rounded-md font-medium w-full text-white"
+      className="py-3 px-6 rounded-lg font-medium w-full text-white"
     >
       {state}
     </button>
