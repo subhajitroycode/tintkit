@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Cards from "./Cards";
+import CardContainer from "./CardComponent/CardContainer";
 import Charts from "./Charts";
 import ButtonShowcase from "./Buttons/ButtonShowcase";
 
@@ -8,7 +8,7 @@ const TabComponent = () => {
 
   const tabContent = {
     buttons: <ButtonShowcase />,
-    cards: <Cards />,
+    cards: <CardContainer />,
     charts: <Charts />,
   };
 
