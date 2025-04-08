@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { ColorContext } from "../../../../contexts/colorContext";
-import { FiShoppingCart } from "react-icons/fi";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
 const Card2 = () => {
