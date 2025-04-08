@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { ColorContext } from "../contexts/colorContext";
 
 const Header = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isDarkMode, setIsDarkMode } = useContext(ColorContext);
 
   useEffect(() => {
     const savedMode = localStorage.getItem("darkMode") === "true";

@@ -113,10 +113,13 @@ const reduce = (state, action) => {
 
 const ColorProvider = ({ children }) => {
   const scaleValues = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const [state, dispatch] = useReducer(reduce, initialState);
 
   return (
-    <ColorContext.Provider value={{ scaleValues, state, dispatch }}>
+    <ColorContext.Provider
+      value={{ scaleValues, state, dispatch, isDarkMode, setIsDarkMode }}
+    >
       {children}
     </ColorContext.Provider>
   );
