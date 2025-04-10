@@ -2,6 +2,7 @@ import React from "react";
 import Card1 from "./Cards/Card1";
 import Card2 from "./Cards/Card2";
 import Card3 from "./Cards/Card3";
+import Card4 from "./Cards/Card4";
 
 const CardContainer = () => {
   return (
@@ -9,7 +10,7 @@ const CardContainer = () => {
       <Card1 />
       <Card2 />
       <Card3 />
-      <div className="bg-amber-500"></div>
+      <Card4 />
       <div className="bg-amber-500"></div>
       <div className="bg-amber-500"></div>
       <div className="bg-amber-500"></div>
