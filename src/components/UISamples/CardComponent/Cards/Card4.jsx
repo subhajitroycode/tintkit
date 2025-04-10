@@ -17,7 +17,7 @@ const Card4 = () => {
       }}
     >
       <div className="relative">
-        <img src="/profile-3-alt.png" alt="Traditional Woman in Saree" />
+        <img src="/profile-3.png" alt="Traditional Woman in Saree" />
         <div className="absolute bottom-4 right-4 flex space-x-2">
           <span
             className="px-2 py-1 text-xs rounded font-medium cursor-default"
