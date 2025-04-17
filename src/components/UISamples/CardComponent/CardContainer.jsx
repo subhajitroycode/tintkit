@@ -3,6 +3,7 @@ import Card1 from "./Cards/Card1";
 import Card2 from "./Cards/Card2";
 import Card3 from "./Cards/Card3";
 import Card4 from "./Cards/Card4";
+import Card5 from "./Cards/Card5";
 
 const CardContainer = () => {
   return (
@@ -11,7 +12,7 @@ const CardContainer = () => {
       <Card2 />
       <Card3 />
       <Card4 />
-      <div className="bg-amber-500"></div>
+      <Card5 />
       <div className="bg-amber-500"></div>
       <div className="bg-amber-500"></div>
     </div>
