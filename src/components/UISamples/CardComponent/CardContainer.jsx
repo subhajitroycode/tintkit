@@ -5,6 +5,7 @@ import Card3 from "./Cards/Card3";
 import Card4 from "./Cards/Card4";
 import Card5 from "./Cards/Card5";
 import Card6 from "./Cards/Card6";
+import Card7 from "./Cards/Card7";
 
 const CardContainer = () => {
   return (
@@ -15,7 +16,7 @@ const CardContainer = () => {
       <Card4 />
       <Card5 />
       <Card6 />
-      <div className="bg-amber-500"></div>
+      <Card7 />
     </div>
   );
 };
