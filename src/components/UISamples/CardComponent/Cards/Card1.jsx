@@ -35,19 +35,14 @@ const Card1 = () => {
         <h4
           className="mt-12 mb-0.5 text-2xl font-bold"
           style={{
-            color: colorState.primaryColor.scale[isDarkMode ? 50 : 950],
+            color: colorState.secondaryColor.isAdded
+              ? colorState.secondaryColor.scale[isDarkMode ? 300 : 800]
+              : colorState.primaryColor.scale[isDarkMode ? 50 : 950],
           }}
         >
           Peter Samuel
         </h4>
-        <h5
-          className="text-lg font-semibold mb-4"
-          style={{
-            color: colorState.secondaryColor.isAdded
-              ? colorState.secondaryColor.scale[300]
-              : colorState.primaryColor.scale[300],
-          }}
-        >
+        <h5 className="text-lg font-semibold mb-4 text-neutral-700/80 dark:text-neutral-200/80">
           Product Design
         </h5>
         <p
