@@ -32,15 +32,29 @@ const Card1 = () => {
           />
         </div>
 
-        <h4 className="mt-12 mb-0.5 text-2xl font-bold">Peter Samuel</h4>
-        <h5 className="text-lg font-semibold mb-4">Product Design</h5>
+        <h4
+          className="mt-12 mb-0.5 text-2xl font-bold"
+          style={{
+            color: colorState.primaryColor.scale[isDarkMode ? 50 : 950],
+          }}
+        >
+          Peter Samuel
+        </h4>
+        <h5
+          className="text-lg font-semibold mb-4"
+          style={{
+            color: colorState.secondaryColor.isAdded
+              ? colorState.secondaryColor.scale[300]
+              : colorState.primaryColor.scale[300],
+          }}
+        >
+          Product Design
+        </h5>
         <p
           className="text-sm text-neutral-700/70 dark:text-neutral-200/50 mx-4 py-2"
           style={{
             borderTop: `4px solid ${
-              isDarkMode
-                ? colorState.primaryColor.scale[300]
-                : colorState.primaryColor.scale[700]
+              colorState.primaryColor.scale[isDarkMode ? 300 : 700]
             }`,
           }}
         >
@@ -51,25 +65,31 @@ const Card1 = () => {
           <FaSquareInstagram
             className="text-xl"
             style={{
-              color: isDarkMode
-                ? colorState.primaryColor.scale[300]
-                : colorState.primaryColor.scale[700],
+              color: colorState.tertiaryColor.isAdded
+                ? colorState.tertiaryColor.scale[isDarkMode ? 300 : 700]
+                : colorState.secondaryColor.isAdded
+                ? colorState.secondaryColor.scale[isDarkMode ? 300 : 700]
+                : colorState.primaryColor.scale[isDarkMode ? 300 : 700],
             }}
           />
           <FaSquareXTwitter
             className="text-xl"
             style={{
-              color: isDarkMode
-                ? colorState.primaryColor.scale[300]
-                : colorState.primaryColor.scale[700],
+              color: colorState.tertiaryColor.isAdded
+                ? colorState.tertiaryColor.scale[isDarkMode ? 300 : 700]
+                : colorState.secondaryColor.isAdded
+                ? colorState.secondaryColor.scale[isDarkMode ? 300 : 700]
+                : colorState.primaryColor.scale[isDarkMode ? 300 : 700],
             }}
           />
           <FaSquareFacebook
             className="text-xl"
             style={{
-              color: isDarkMode
-                ? colorState.primaryColor.scale[300]
-                : colorState.primaryColor.scale[700],
+              color: colorState.tertiaryColor.isAdded
+                ? colorState.tertiaryColor.scale[isDarkMode ? 300 : 700]
+                : colorState.secondaryColor.isAdded
+                ? colorState.secondaryColor.scale[isDarkMode ? 300 : 700]
+                : colorState.primaryColor.scale[isDarkMode ? 300 : 700],
             }}
           />
         </div>
