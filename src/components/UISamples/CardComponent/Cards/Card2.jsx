@@ -11,9 +11,7 @@ const Card2 = () => {
     <div
       className="col-span-2 rounded-xl border border-neutral-300 dark:border-neutral-600 shadow-sm h-full flex"
       style={{
-        backgroundColor: colorState.secondaryColor.isAdded
-          ? colorState.secondaryColor.scale[isDarkMode ? 900 : 100]
-          : colorState.primaryColor.scale[isDarkMode ? 900 : 100],
+        backgroundColor: colorState.primaryColor.scale[isDarkMode ? 900 : 100],
       }}
     >
       <div className="h-full w-2/5 rounded-tl-xl rounded-bl-xl bg-[url(/product-1.png)] bg-no-repeat bg-center bg-cover"></div>
@@ -32,7 +30,7 @@ const Card2 = () => {
           className="font-product text-3xl py-5 w-[22rem]"
           style={{
             color: colorState.secondaryColor.isAdded
-              ? colorState.primaryColor.scale[isDarkMode ? 300 : 900]
+              ? colorState.secondaryColor.scale[isDarkMode ? 300 : 900]
               : colorState.primaryColor.scale[isDarkMode ? 100 : 900],
           }}
         >

@@ -24,7 +24,12 @@ const Card7 = () => {
           className="rounded-xl"
         />
         <h4 className="text-4xl font-bold text-neutral-700 dark:text-neutral-200 mb-4">
-          <span className="text-base block my-3 text-neutral-800/50 dark:text-neutral-200/50">
+          <span
+            className="text-base block my-3 text-neutral-800/50 dark:text-neutral-200/50"
+            style={{
+              color: colorState.tertiaryColor.scale[isDarkMode ? 300 : 800],
+            }}
+          >
             26.11.2022
           </span>
           Down The Rabbit Hole
@@ -34,14 +39,20 @@ const Card7 = () => {
           <p
             className="font-semibold underline cursor-pointer"
             style={{
-              color: colorState.primaryColor.scale[isDarkMode ? 400 : 700],
+              color: colorState.secondaryColor.isAdded
+                ? colorState.secondaryColor.scale[isDarkMode ? 400 : 700]
+                : colorState.primaryColor.scale[isDarkMode ? 400 : 700],
             }}
           >
             Read more
           </p>
           <div
             className="text-2xl rounded-full p-1 text-white"
-            style={{ backgroundColor: colorState.primaryColor.scale[400] }}
+            style={{
+              backgroundColor: colorState.secondaryColor.isAdded
+                ? colorState.secondaryColor.scale[400]
+                : colorState.primaryColor.scale[400],
+            }}
           >
             <MdOutlineKeyboardDoubleArrowRight />
           </div>

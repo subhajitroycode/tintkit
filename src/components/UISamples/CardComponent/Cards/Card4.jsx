@@ -5,8 +5,16 @@ const Card4 = () => {
   const { state: colorState, isDarkMode } = useContext(ColorContext);
 
   const tagStyle = {
-    backgroundColor: colorState.primaryColor.scale[100],
-    color: colorState.primaryColor.scale[700],
+    backgroundColor: colorState.tertiaryColor.isAdded
+      ? colorState.tertiaryColor.scale[100]
+      : colorState.secondaryColor.isAdded
+      ? colorState.secondaryColor.scale[100]
+      : colorState.primaryColor.scale[100],
+    color: colorState.tertiaryColor.isAdded
+      ? colorState.tertiaryColor.scale[700]
+      : colorState.secondaryColor.isAdded
+      ? colorState.secondaryColor.scale[700]
+      : colorState.primaryColor.scale[700],
   };
 
   return (
@@ -60,8 +68,9 @@ const Card4 = () => {
         <button
           className="mt-2 text-sm font-medium px-4 py-2 rounded-lg text-white transition duration-200"
           style={{
-            backgroundColor:
-              colorState.primaryColor.scale[isDarkMode ? 700 : 500],
+            backgroundColor: colorState.secondaryColor.isAdded
+              ? colorState.secondaryColor.scale[isDarkMode ? 700 : 500]
+              : colorState.primaryColor.scale[isDarkMode ? 700 : 500],
           }}
         >
           Explore More

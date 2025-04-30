@@ -119,14 +119,22 @@ const Card5 = () => {
               data-name="Path 3888"
               d="M331.25,451.143s-9.308,9.94,6.1,48.688V712.294h39.358l18.857-104.558L415.56,456.5Z"
               transform="translate(360 91.102)"
-              fill={colorState.primaryColor.scale[200]}
+              fill={
+                colorState.secondaryColor.isAdded
+                  ? colorState.secondaryColor.scale[200]
+                  : colorState.primaryColor.scale[200]
+              }
             />
             <path
               id="Path_3889-1207"
               data-name="Path 3889"
               d="M281.379,415.64A11.344,11.344,0,0,1,270.07,404.6l-2.344-88.338,40.109-76.093a11.412,11.412,0,0,1,9.307-6.03l30.566-1.962-2.639,178.065-62.7,5.358Q281.874,415.64,281.379,415.64Z"
               transform="translate(360 91.102)"
-              fill={colorState.primaryColor.scale[800]}
+              fill={
+                colorState.secondaryColor.isAdded
+                  ? colorState.secondaryColor.scale[800]
+                  : colorState.primaryColor.scale[800]
+              }
             />
             <path
               id="Path_3890-1208"
@@ -140,7 +148,11 @@ const Card5 = () => {
               data-name="Path 3891"
               d="M369.768,368.2c-29.5,0-53.5-32.075-53.5-71.5s24-71.5,53.5-71.5,53.5,32.075,53.5,71.5S399.268,368.2,369.768,368.2Zm0-136c-25.64,0-46.5,28.935-46.5,64.5s20.86,64.5,46.5,64.5,46.5-28.935,46.5-64.5-20.86-64.5-46.5-64.5Z"
               transform="translate(360 91.102)"
-              fill={colorState.primaryColor.scale[800]}
+              fill={
+                colorState.secondaryColor.isAdded
+                  ? colorState.secondaryColor.scale[800]
+                  : colorState.primaryColor.scale[800]
+              }
             />
             <path
               id="Path_3892-1210"
@@ -284,7 +296,11 @@ const Card5 = () => {
               data-name="Path 3914"
               d="M626.666,566.69l-.031.006-48.264,9.662-41.519,16.72a4.406,4.406,0,0,1-5.733-2.441q-.076-.189-.135-.385L500.653,488.69a4.387,4.387,0,0,1,2.576-5.348l42.278-17.026.031-.006,48.264-9.662,41.519-16.72a4.406,4.406,0,0,1,5.733,2.441q.076.189.135.385l30.331,101.562a4.387,4.387,0,0,1-2.576,5.348Z"
               transform="translate(360 91.102)"
-              fill={colorState.primaryColor.scale[600]}
+              fill={
+                colorState.tertiaryColor.isAdded
+                  ? colorState.tertiaryColor.scale[600]
+                  : colorState.primaryColor.scale[600]
+              }
             />
             <path
               id="Path_3915-1228"
@@ -349,7 +365,12 @@ const Card5 = () => {
           </g>
         </svg>
       </div>
-      <h4 className="p-4 text-4xl font-semibold">Your Journey Begins Here</h4>
+      <h4
+        className="p-4 text-4xl font-semibold"
+        style={{ color: colorState.tertiaryColor.scale[600] }}
+      >
+        Your Journey Begins Here
+      </h4>
     </div>
   );
 };

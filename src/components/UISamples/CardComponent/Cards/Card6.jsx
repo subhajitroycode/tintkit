@@ -17,7 +17,11 @@ const Card6 = () => {
       <div className="flex flex-col items-center justify-center space-y-6">
         <h4
           className="text-3xl font-bold mt-4"
-          style={{ color: colorState.primaryColor.scale[950] }}
+          style={{
+            color: colorState.secondaryColor.isAdded
+              ? colorState.secondaryColor.scale[900]
+              : colorState.primaryColor.scale[950],
+          }}
         >
           ASUS Zenbook A14
         </h4>
@@ -26,7 +30,13 @@ const Card6 = () => {
           alt="image of asus zenbook a14 laptop"
           className="w-64 h-auto object-contain drop-shadow-lg"
         />
-        <button className="font-semibold px-6 py-2 rounded-full bg-neutral-50 dark:bg-neutral-800">
+        <button
+          className="font-semibold px-6 py-2 rounded-full bg-neutral-50 dark:bg-neutral-800"
+          style={{
+            backgroundColor: colorState.tertiaryColor.scale[200],
+            color: colorState.tertiaryColor.scale[900],
+          }}
+        >
           Shop Now
         </button>
       </div>

@@ -8,7 +8,9 @@ const Card3 = () => {
   const bgStyle = {
     background: colorState.primaryColor.scale[200],
     backgroundImage: `linear-gradient(180deg, ${
-      colorState.primaryColor.scale[isDarkMode ? 500 : 100]
+      colorState.secondaryColor.isAdded
+        ? colorState.secondaryColor.scale[isDarkMode ? 300 : 100]
+        : colorState.primaryColor.scale[isDarkMode ? 500 : 100]
     } 20%, ${colorState.primaryColor.scale[isDarkMode ? 900 : 400]} 100%)`,
   };
 
@@ -21,12 +23,18 @@ const Card3 = () => {
         <h4
           className="mt-8 mb-2.5 text-3xl font-bold"
           style={{
-            color: colorState.primaryColor.scale[isDarkMode ? 50 : 950],
+            color: colorState.secondaryColor.isAdded
+              ? colorState.secondaryColor.scale[700]
+              : colorState.primaryColor.scale[isDarkMode ? 50 : 950],
           }}
         >
           Louisa Marin
         </h4>
-        <p>
+        <p
+          style={{
+            color: colorState.tertiaryColor.scale[isDarkMode ? 100 : 800],
+          }}
+        >
           <FiLoader className="inline-block mr-1" />
           <span>Connecting</span>
         </p>
