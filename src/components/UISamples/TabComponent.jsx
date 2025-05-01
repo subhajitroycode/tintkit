@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CardContainer from "./CardComponent/CardContainer";
-import Charts from "./Charts";
-import ButtonShowcase from "./Buttons/ButtonShowcase";
+import ButtonShowcase from "./ButtonComponent/ButtonShowcase";
+import VisualContainer from "./VisualComponent/VisualContainer";
 
 const TabComponent = () => {
   const [activeTab, setActiveTab] = useState("buttons");
@@ -9,10 +9,10 @@ const TabComponent = () => {
   const tabContent = {
     buttons: <ButtonShowcase />,
     cards: <CardContainer />,
-    charts: <Charts />,
+    visualizations: <VisualContainer />,
   };
 
-  const tabArr = ["buttons", "cards", "charts"];
+  const tabArr = ["buttons", "cards", "visualizations"];
 
   return (
     <div className="mt-4">
