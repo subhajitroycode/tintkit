@@ -4,15 +4,15 @@ import ButtonShowcase from "./ButtonComponent/ButtonShowcase";
 import VisualContainer from "./VisualComponent/VisualContainer";
 
 const TabComponent = () => {
-  const [activeTab, setActiveTab] = useState("buttons");
+  const [activeTab, setActiveTab] = useState("cards");
 
   const tabContent = {
     buttons: <ButtonShowcase />,
     cards: <CardContainer />,
-    visualizations: <VisualContainer />,
+    visuals: <VisualContainer />,
   };
 
-  const tabArr = ["buttons", "cards", "visualizations"];
+  const tabArr = ["cards", "visuals", "buttons"];
 
   return (
     <div className="mt-4">
