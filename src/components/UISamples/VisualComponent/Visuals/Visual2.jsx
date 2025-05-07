@@ -28,8 +28,8 @@ const Visual2 = () => {
   const totalExpenses = pieData.reduce((sum, item) => sum + item.value, 0);
 
   return (
-    <div className="w-full border border-neutral-300 dark:border-neutral-600 rounded-xl p-4 shadow-sm">
-      <h3 className="text-xl font-semibold mb-1">Expenses</h3>
+    <div className="w-full border bg-neutral-200 dark:bg-neutral-600 border-neutral-200 dark:border-neutral-600 rounded-xl p-4 shadow-sm">
+      <h3 className="text-2xl font-bold mb-1">Expenses</h3>
 
       <div className="relative">
         <ResponsiveContainer width="100%" height={220}>
@@ -52,7 +52,7 @@ const Visual2 = () => {
 
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
-            <p className="font-bold text-2xl">
+            <p className="font-semibold text-xl">
               $ {totalExpenses.toLocaleString()}
             </p>
           </div>

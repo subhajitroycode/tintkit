@@ -3,7 +3,7 @@ import { BarChart, ResponsiveContainer, XAxis, Bar } from "recharts";
 import { ColorContext } from "../../../../contexts/colorContext";
 
 const Visual1 = () => {
-  const { state: colorState } = useContext(ColorContext);
+  const { state: colorState, isDarkMode } = useContext(ColorContext);
 
   const weeklyData = [
     { week: "Week 1", strength: 45, cardio: 60, flexibility: 20 },
@@ -31,10 +31,10 @@ const Visual1 = () => {
   });
 
   return (
-    <div className="w-full border border-neutral-300 dark:border-neutral-600 rounded-xl p-4 shadow-sm">
+    <div className="w-full border bg-neutral-200 dark:bg-neutral-600 border-neutral-200 dark:border-neutral-600 rounded-xl p-4 shadow-sm">
       <div className="mb-1">
         <h2 className="text-2xl font-bold">Workout Progress</h2>
-        <p className="text-sm text-neutral-500 dark:text-neutral-400">
+        <p className="text-sm text-neutral-500 dark:text-neutral-300">
           6-Week Training Program
         </p>
       </div>
@@ -52,7 +52,7 @@ const Visual1 = () => {
             dataKey="week"
             axisLine={false}
             tickLine={false}
-            tick={{ fill: "#9CA3AF", fontSize: 12 }}
+            tick={{ fill: isDarkMode ? "#d4d4d4" : "#737373", fontSize: 12 }}
             dy={10}
           />
           <Bar
