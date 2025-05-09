@@ -1,5 +1,5 @@
 import React from "react";
-import { Visual1, Visual2, Visual3 } from "./Visuals";
+import { Visual1, Visual2, Visual3, Visual4 } from "./Visuals";
 
 const VisualContainer = () => {
   return (
@@ -7,9 +7,7 @@ const VisualContainer = () => {
       <Visual1 />
       <Visual2 />
       <Visual3 />
-      <div className="bg-neutral-200 dark:bg-neutral-700/50 rounded-md shadow-md p-4">
-        Visualization 4
-      </div>
+      <Visual4 />
     </div>
   );
 };
