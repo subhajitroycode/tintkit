@@ -1,5 +1,12 @@
 import React from "react";
-import { Visual1, Visual2, Visual3, Visual4 } from "./Visuals";
+import {
+  Visual1,
+  Visual2,
+  Visual3,
+  Visual4,
+  Visual5,
+  Visual6,
+} from "./Visuals";
 
 const VisualContainer = () => {
   return (
@@ -8,6 +15,8 @@ const VisualContainer = () => {
       <Visual2 />
       <Visual3 />
       <Visual4 />
+      <Visual5 />
+      <Visual6 />
     </div>
   );
 };
