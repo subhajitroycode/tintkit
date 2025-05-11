@@ -1,4 +1,5 @@
 import ControlPanel from "./components/Dashboard/ControlPanel";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import ColorDisplay from "./components/ScaleDisplay/ColorDisplay";
 import UISample from "./components/UISamples/UISample";
@@ -19,6 +20,7 @@ function App() {
         </div>
         <UISample />
       </main>
+      <Footer />
     </ColorProvider>
   );
 }
