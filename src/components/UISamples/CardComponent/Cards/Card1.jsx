@@ -24,9 +24,7 @@ const Card1 = () => {
         <div
           className="absolute -top-32 left-1/2 -translate-x-1/2 rounded-full border-4 border-neutral-100 dark:border-neutral-800"
           style={{
-            backgroundColor: colorState.secondaryColor.isAdded
-              ? colorState.secondaryColor.scale[800]
-              : colorState.primaryColor.scale[900],
+            backgroundColor: colorState.primaryColor.scale[900],
           }}
         >
           <img
