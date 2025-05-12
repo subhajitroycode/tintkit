@@ -2,10 +2,13 @@ import React, { useContext, useState } from "react";
 import { ColorContext } from "../../contexts/colorContext";
 import { hexToRGB } from "../../utils/colorConverter";
 import { GoHeart } from "react-icons/go";
+import { createPortal } from "react-dom";
+import ModalComponent from "../Modals/ModalComponent";
 
 const ColorScale = ({ colorType = "primary" }) => {
   const [isCopied, setIsCopied] = useState(null);
   const { scaleValues, state } = useContext(ColorContext);
+  const [showModal, setShowModal] = useState(false);
   const colorData = state[`${colorType}Color`];
 
   const getTextColor = (color) => {
@@ -23,7 +26,20 @@ const ColorScale = ({ colorType = "primary" }) => {
           {colorData.name.trim().slice(0, 1).toUpperCase() +
             colorData.name.trim().slice(1)}
         </h3>
-        <button>Export</button>
+        <button
+          className="text-neutral-600 hover:text-neutral-900 cursor-pointer"
+          onClick={() => setShowModal(true)}
+        >
+          Export
+        </button>
+        {showModal &&
+          createPortal(
+            <ModalComponent
+              onClose={() => setShowModal(false)}
+              color={colorType}
+            />,
+            document.getElementById("portals")
+          )}
       </div>
       <div className="grid gap-1.5 lg:grid-cols-11 mt-2">
         {scaleValues.map((scale) => {
