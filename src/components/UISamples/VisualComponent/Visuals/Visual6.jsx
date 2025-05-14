@@ -49,7 +49,7 @@ const Visual6 = () => {
           <div className="flex items-start mb-1.5">
             <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center">
               <img
-                src="/profile-8.png"
+                src="/profile-5.png"
                 alt="profile picture of a male model"
                 className="rounded-full"
               />
@@ -84,7 +84,7 @@ const Visual6 = () => {
           <div className="flex items-start mb-1.5">
             <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center">
               <img
-                src="/profile-9.png"
+                src="/profile-6.png"
                 alt="profile picture of a female model"
                 className="rounded-full"
               />
