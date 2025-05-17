@@ -27,7 +27,7 @@ const ColorScale = ({ colorType = "primary" }) => {
             colorData.name.trim().slice(1)}
         </h3>
         <button
-          className="text-neutral-600 hover:text-neutral-900 cursor-pointer"
+          className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-500 dark:hover:text-neutral-300 cursor-pointer"
           onClick={() => setShowModal(true)}
         >
           Export
