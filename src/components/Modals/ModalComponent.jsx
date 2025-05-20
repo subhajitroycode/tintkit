@@ -1,8 +1,9 @@
 import { useState, useContext, useRef, useEffect } from "react";
-import { IoChevronDown, IoCloseOutline } from "react-icons/io5";
+import { IoCloseOutline } from "react-icons/io5";
 import { ColorContext } from "../../contexts/colorContext";
 import { nanoid } from "nanoid";
 import { IoMdArrowDropdown, IoMdCheckmark } from "react-icons/io";
+import { hexToHSL, hexToOKLCH, hexToRGB } from "../../utils/colorConverter";
 
 const ModalComponent = ({ onClose, color = "all" }) => {
   const { state: colorState } = useContext(ColorContext);
@@ -14,6 +15,7 @@ const ModalComponent = ({ onClose, color = "all" }) => {
     color === "all" ? "primary" : color
   );
   const [showAllColors, setShowAllColors] = useState(color === "all");
+  const [code, setCode] = useState("hex");
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -55,9 +57,24 @@ const ModalComponent = ({ onClose, color = "all" }) => {
             .map((colorType) => {
               const scale = getColorScale(colorType);
               return Object.entries(scale)
-                .map(
-                  ([shade, value]) => `--color-${colorType}-${shade}: ${value};`
-                )
+                .map(([shade, value]) => {
+                  if (code === "rgb") {
+                    const { r, g, b } = hexToRGB(value);
+                    console.log(r * 255, g * 255, b * 255);
+
+                    return `--color-${colorType}-${shade}: rgb(${r * 255}, ${
+                      g * 255
+                    }, ${b * 255});`;
+                  } else if (code === "hsl") {
+                    const { h, s, l } = hexToHSL(value);
+                    return `--color-${colorType}-${shade}: hsl(${Math.round(
+                      h
+                    )}, ${Math.round(s)}%, ${Math.round(l)}%);`;
+                  } else if (code === "oklch") {
+                    const { l, c, h } = hexToOKLCH(value);
+                    return `--color-${colorType}-${shade}: oklch(${l} ${c} ${h});`;
+                  } else return `--color-${colorType}-${shade}: ${value};`;
+                })
                 .join("\n");
             })
             .join("\n\n");
@@ -66,7 +83,22 @@ const ModalComponent = ({ onClose, color = "all" }) => {
             .map((colorType) => {
               const scale = getColorScale(colorType);
               return `'${colorType}': {\n${Object.entries(scale)
-                .map(([shade, value]) => `    '${shade}': '${value}',`)
+                .map(([shade, value]) => {
+                  if (code === "rgb") {
+                    const { r, g, b } = hexToRGB(value);
+                    return `    '${shade}': 'rgb(${r * 255}, ${g * 255}, ${
+                      b * 255
+                    })',`;
+                  } else if (code === "hsl") {
+                    const { h, s, l } = hexToHSL(value);
+                    return `    '${shade}': 'hsl(${Math.round(h)}, ${Math.round(
+                      s
+                    )}%, ${Math.round(l)}%)',`;
+                  } else if (code === "oklch") {
+                    const { l, c, h } = hexToOKLCH(value);
+                    return `    '${shade}': 'oklch(${l} ${c} ${h})',`;
+                  } else return `    '${shade}': '${value}',`;
+                })
                 .join("\n")}\n},`;
             })
             .join("\n\n");
@@ -76,9 +108,22 @@ const ModalComponent = ({ onClose, color = "all" }) => {
           .map((colorType) => {
             const scale = getColorScale(colorType);
             return Object.entries(scale)
-              .map(
-                ([shade, value]) => `  --color-${colorType}-${shade}: ${value};`
-              )
+              .map(([shade, value]) => {
+                if (code === "rgb") {
+                  const { r, g, b } = hexToRGB(value);
+                  return `  --color-${colorType}-${shade}: rgb(${r * 255}, ${
+                    g * 255
+                  }, ${b * 255});`;
+                } else if (code === "hsl") {
+                  const { h, s, l } = hexToHSL(value);
+                  return `  --color-${colorType}-${shade}: hsl(${Math.round(
+                    h
+                  )}, ${Math.round(s)}%, ${Math.round(l)}%);`;
+                } else if (code === "oklch") {
+                  const { l, c, h } = hexToOKLCH(value);
+                  return `  --color-${colorType}-${shade}: oklch(${l} ${c} ${h});`;
+                } else return `  --color-${colorType}-${shade}: ${value};`;
+              })
               .join("\n");
           })
           .join("\n\n")}\n}`;
@@ -91,20 +136,63 @@ const ModalComponent = ({ onClose, color = "all" }) => {
       if (activeTab === "tailwind") {
         if (tailwindVersion === "v4") {
           return Object.entries(scale)
-            .map(
-              ([shade, value]) => `--color-${selectedColor}-${shade}: ${value};`
-            )
+            .map(([shade, value]) => {
+              if (code === "rgb") {
+                const { r, g, b } = hexToRGB(value);
+                console.log(r * 255, g * 255, b * 255);
+
+                return `--color-${selectedColor}-${shade}: rgb(${r * 255}, ${
+                  g * 255
+                }, ${b * 255});`;
+              } else if (code === "hsl") {
+                const { h, s, l } = hexToHSL(value);
+                return `--color-${selectedColor}-${shade}: hsl(${Math.round(
+                  h
+                )}, ${Math.round(s)}%, ${Math.round(l)}%);`;
+              } else if (code === "oklch") {
+                const { l, c, h } = hexToOKLCH(value);
+                return `--color-${selectedColor}-${shade}: oklch(${l} ${c} ${h});`;
+              } else return `--color-${selectedColor}-${shade}: ${value};`;
+            })
             .join("\n");
         } else {
           return `'${selectedColor}': {\n${Object.entries(scale)
-            .map(([shade, value]) => `    '${shade}': '${value}',`)
+            .map(([shade, value]) => {
+              if (code === "rgb") {
+                const { r, g, b } = hexToRGB(value);
+                return `    '${shade}': 'rgb(${r * 255}, ${g * 255}, ${
+                  b * 255
+                })',`;
+              } else if (code === "hsl") {
+                const { h, s, l } = hexToHSL(value);
+                return `    '${shade}': 'hsl(${Math.round(h)}, ${Math.round(
+                  s
+                )}%, ${Math.round(l)}%)',`;
+              } else if (code === "oklch") {
+                const { l, c, h } = hexToOKLCH(value);
+                return `    '${shade}': 'oklch(${l} ${c} ${h})',`;
+              } else return `    '${shade}': '${value}',`;
+            })
             .join("\n")}\n},`;
         }
       } else if (activeTab === "css") {
         return `:root {\n${Object.entries(scale)
-          .map(
-            ([shade, value]) => `  --color-${selectedColor}-${shade}: ${value};`
-          )
+          .map(([shade, value]) => {
+            if (code === "rgb") {
+              const { r, g, b } = hexToRGB(value);
+              return `  --color-${selectedColor}-${shade}: rgb(${r * 255}, ${
+                g * 255
+              }, ${b * 255});`;
+            } else if (code === "hsl") {
+              const { h, s, l } = hexToHSL(value);
+              return `  --color-${selectedColor}-${shade}: hsl(${Math.round(
+                h
+              )}, ${Math.round(s)}%, ${Math.round(l)}%);`;
+            } else if (code === "oklch") {
+              const { l, c, h } = hexToOKLCH(value);
+              return `  --color-${selectedColor}-${shade}: oklch(${l} ${c} ${h});`;
+            } else return `  --color-${selectedColor}-${shade}: ${value};`;
+          })
           .join("\n")}\n}`;
       }
     }
@@ -147,7 +235,7 @@ const ModalComponent = ({ onClose, color = "all" }) => {
             <div className="relative" ref={dropdownRef}>
               <div className="flex items-center">
                 <button
-                  className={`py-2 pl-2.5 pr-1.5 flex items-center gap-1 rounded-l-lg ${
+                  className={`py-2 pl-2.5 pr-1.5 flex items-center gap-1 rounded-l-lg cursor-pointer ${
                     activeTab === "tailwind"
                       ? "bg-neutral-700 text-white font-medium dark:bg-neutral-300 dark:text-neutral-900"
                       : "bg-neutral-300 dark:bg-neutral-700"
@@ -201,7 +289,7 @@ const ModalComponent = ({ onClose, color = "all" }) => {
             </div>
 
             <button
-              className={`px-4 py-2 ml-2 rounded-lg ${
+              className={`px-4 py-2 ml-2 rounded-lg cursor-pointer ${
                 activeTab === "css"
                   ? "bg-neutral-700 text-white font-medium dark:bg-neutral-300 dark:text-neutral-900"
                   : "bg-neutral-300 dark:bg-neutral-700"
@@ -245,13 +333,52 @@ const ModalComponent = ({ onClose, color = "all" }) => {
             )}
           </div>
 
+          <div className="flex gap-2 mb-2 text-neutral-400 dark:text-neutral-500">
+            <button
+              className={`text-sm cursor-pointer ${
+                code === "hex" &&
+                "text-neutral-900 dark:text-neutral-100 font-medium"
+              }`}
+              onClick={() => setCode("hex")}
+            >
+              HEX
+            </button>
+            <button
+              className={`text-sm cursor-pointer ${
+                code === "rgb" &&
+                "text-neutral-900 dark:text-neutral-100 font-medium"
+              }`}
+              onClick={() => setCode("rgb")}
+            >
+              RGB
+            </button>
+            <button
+              className={`text-sm cursor-pointer ${
+                code === "hsl" &&
+                "text-neutral-900 dark:text-neutral-100 font-medium"
+              }`}
+              onClick={() => setCode("hsl")}
+            >
+              HSL
+            </button>
+            <button
+              className={`text-sm cursor-pointer ${
+                code === "oklch" &&
+                "text-neutral-900 dark:text-neutral-100 font-medium"
+              }`}
+              onClick={() => setCode("oklch")}
+            >
+              OKLCH
+            </button>
+          </div>
+
           <div className="relative">
             <pre className="bg-neutral-200 dark:bg-neutral-900 p-4 rounded-md overflow-x-auto whitespace-pre text-sm font-mono max-h-60">
               {generateFormattedColors()}
             </pre>
 
             <button
-              className="absolute top-2 right-2 bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-xs"
+              className="absolute top-2 right-2 bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-xs cursor-pointer"
               onClick={handleCopyToClipboard}
             >
               {copyStatus}
