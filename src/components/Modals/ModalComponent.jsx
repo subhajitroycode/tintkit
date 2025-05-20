@@ -303,35 +303,37 @@ const ModalComponent = ({ onClose, color = "all" }) => {
             </button>
           </div>
 
-          <div className="mb-4 flex justify-between items-center">
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                checked={showAllColors}
-                onChange={() => setShowAllColors(!showAllColors)}
-                className="form-checkbox h-4 w-4 text-blue-500"
-              />
-              <span className="ml-2 text-sm">Export all color scales</span>
-            </label>
+          {colorTypes.length > 1 && (
+            <div className="mb-4 flex justify-between items-center">
+              <label className="flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={showAllColors}
+                  onChange={() => setShowAllColors(!showAllColors)}
+                  className="form-checkbox h-4 w-4 text-blue-500"
+                />
+                <span className="ml-2 text-sm">Export all color scales</span>
+              </label>
 
-            {/* Color selector - only show if not exporting all */}
-            {!showAllColors && colorTypes.length > 0 && (
-              <div className="flex bg-neutral-300 dark:bg-neutral-700 rounded-full">
-                {colorTypes.map((colorType) => (
-                  <button
-                    key={nanoid()}
-                    className={`py-1 px-1.5 first:rounded-l-full first:pl-2.5 first:border-r last:rounded-r-full last:pr-2.5 last:border-l text-sm border-neutral-500/50 border-none outline-none ${
-                      selectedColor === colorType &&
-                      "bg-neutral-700 text-neutral-100 dark:bg-neutral-300 dark:text-neutral-900 font-medium"
-                    }`}
-                    onClick={() => setSelectedColor(colorType)}
-                  >
-                    {colorType.charAt(0).toUpperCase() + colorType.slice(1)}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+              {/* Color selector - only show if not exporting all */}
+              {!showAllColors && colorTypes.length > 0 && (
+                <div className="flex bg-neutral-300 dark:bg-neutral-700 rounded-full">
+                  {colorTypes.map((colorType) => (
+                    <button
+                      key={nanoid()}
+                      className={`py-1 px-1.5 first:rounded-l-full first:pl-2.5 first:border-r last:rounded-r-full last:pr-2.5 last:border-l text-sm border-neutral-500/50 border-none outline-none ${
+                        selectedColor === colorType &&
+                        "bg-neutral-700 text-neutral-100 dark:bg-neutral-300 dark:text-neutral-900 font-medium"
+                      }`}
+                      onClick={() => setSelectedColor(colorType)}
+                    >
+                      {colorType.charAt(0).toUpperCase() + colorType.slice(1)}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
 
           <div className="flex gap-2 mb-2 text-neutral-400 dark:text-neutral-500">
             <button
