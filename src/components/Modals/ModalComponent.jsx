@@ -16,21 +16,35 @@ const ModalComponent = ({ onClose, color = "all" }) => {
   );
   const [showAllColors, setShowAllColors] = useState(color === "all");
   const [code, setCode] = useState("hex");
+  const [show, setShow] = useState(false);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
+    setShow(true);
+    document.body.style.overflow = "hidden";
+
     const handleClickOutside = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target))
         setShowTailwindDropdown(false);
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.body.style.overflow = "unset";
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
+
+  const handleClose = () => {
+    setShow(false);
+    setTimeout(() => {
+      onClose();
+    }, 300);
+  };
 
   const handleOuterClick = (e) => {
     if (e.target === e.currentTarget) {
-      onClose();
+      handleClose();
     }
   };
 
@@ -216,14 +230,20 @@ const ModalComponent = ({ onClose, color = "all" }) => {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 bottom-0 bg-neutral-700/50 z-40 backdrop-blur-sm flex items-center justify-center"
+      className={`fixed top-0 left-0 right-0 bottom-0 bg-neutral-700/50 z-40 backdrop-blur-sm flex items-center justify-center transition-opacity duration-300 ease-in-out ${
+        show ? "opacity-100" : "opacity-0"
+      }`}
       onClick={handleOuterClick}
     >
-      <div className="bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-50 z-50 w-full max-w-lg rounded-lg shadow-lg absolute top-1/2 left-1/2  transform -translate-1/2">
+      <div
+        className={`bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-50 z-50 w-full max-w-lg rounded-lg shadow-lg transition-all duration-300 ease-in-out ${
+          show ? "opacity-100 scale-100" : "opacity-0 scale-95"
+        }`}
+      >
         <div className="flex justify-between items-center border-b border-neutral-300 dark:border-neutral-700 p-4">
           <h4 className="font-medium">Export Color Scales</h4>
           <button
-            onClick={onClose}
+            onClick={handleClose}
             className="hover:bg-neutral-200 dark:hover:bg-neutral-700 p-1 rounded-full"
           >
             <IoCloseOutline className="text-xl" />
