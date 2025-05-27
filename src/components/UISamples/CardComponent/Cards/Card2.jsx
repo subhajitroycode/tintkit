@@ -1,21 +1,19 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { ColorContext } from "../../../../contexts/colorContext";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
 const Card2 = () => {
   const { state: colorState, isDarkMode } = useContext(ColorContext);
 
-  console.log(isDarkMode);
-
   return (
     <div
-      className="col-span-2 rounded-xl border border-neutral-300 dark:border-neutral-600 shadow-sm h-full flex"
+      className="md:col-span-2 rounded-xl border border-neutral-300 dark:border-neutral-600 shadow-sm h-full flex flex-col md:flex-row"
       style={{
         backgroundColor: colorState.primaryColor.scale[isDarkMode ? 900 : 100],
       }}
     >
-      <div className="h-full w-2/5 rounded-tl-xl rounded-bl-xl bg-[url(/product-1.png)] bg-no-repeat bg-center bg-cover"></div>
-      <div className="w-3/5 p-7">
+      <div className="h-2/5 w-full md:h-full md:w-2/5 md:rounded-bl-xl rounded-tl-xl rounded-tr-xl md:rounded-tr-none bg-[url(/product-1-mobile.png)] md:bg-[url(/product-1.png)] bg-no-repeat bg-center bg-cover"></div>
+      <div className="md:w-3/5 p-4 md:p-7">
         <h4
           className="tracking-[0.3rem] text-neutral-700/80 dark:text-neutral-200/50 text-sm"
           style={{
@@ -27,7 +25,7 @@ const Card2 = () => {
           PERFUME
         </h4>
         <h5
-          className="font-product text-3xl py-5 w-[22rem]"
+          className="font-product text-2xl md:text-3xl py-3 md:py-5 md:w-[22rem]"
           style={{
             color: colorState.secondaryColor.isAdded
               ? colorState.secondaryColor.scale[isDarkMode ? 300 : 900]
@@ -36,12 +34,12 @@ const Card2 = () => {
         >
           Gabrielle Essence Eau De Parfum
         </h5>
-        <p className="w-80 text-neutral-700/90 dark:text-neutral-200/80">
+        <p className="md:w-80 text-neutral-700/90 dark:text-neutral-200/80 text-xs md:text-base">
           A floral, solar and voluptuous interpretation composed by Olivier
           Polge, Perfumer-Creator for the House of CHANEL.
         </p>
         <p
-          className="my-6 font-product text-3xl"
+          className="my-3 md:my-6 font-product text-2xl md:text-3xl"
           style={{
             color: colorState.secondaryColor.isAdded
               ? colorState.primaryColor.scale[isDarkMode ? 400 : 800]

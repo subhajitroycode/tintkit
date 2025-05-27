@@ -11,7 +11,7 @@ const ColorInput = ({ colorType = "primary" }) => {
   const actionType = `SET_${colorType.toUpperCase()}_COLOR`;
 
   return (
-    <div className="mb-6 p-4 border border-neutral-200 dark:border-neutral-600 rounded-lg">
+    <div className="mb-6 p-4 md:border border-neutral-200 dark:border-neutral-600 rounded-lg text-left">
       <div className="flex justify-between items-center mb-2">
         <h3 className="font-semibold">
           {colorType.charAt(0).toUpperCase() + colorType.slice(1)} Color

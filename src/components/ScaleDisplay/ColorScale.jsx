@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { ColorContext } from "../../contexts/colorContext";
 import { hexToRGB } from "../../utils/colorConverter";
 import { GoHeart } from "react-icons/go";
 import { createPortal } from "react-dom";
 import ModalComponent from "../Modals/ModalComponent";
+import { nanoid } from "nanoid";
 
 const ColorScale = ({ colorType = "primary" }) => {
   const [isCopied, setIsCopied] = useState(null);
@@ -41,37 +42,36 @@ const ColorScale = ({ colorType = "primary" }) => {
             document.getElementById("portals")
           )}
       </div>
-      <div className="grid gap-1.5 lg:grid-cols-11 mt-2">
+      <div className="grid gap-1.5 xl:grid-cols-11 mt-2">
         {scaleValues.map((scale) => {
           const backgroundColor = colorData.scale[scale];
           const textColor = getTextColor(backgroundColor);
 
           return (
-            <div key={scale}>
-              <div
-                className={`h-12 lg:h-24 rounded-md flex flex-col justify-end items-center pb-3 cursor-pointer ${textColor}`}
-                style={{ backgroundColor }}
-                onClick={() => {
-                  navigator.clipboard.writeText(backgroundColor);
-                  setIsCopied(scale);
-                  setTimeout(() => setIsCopied(null), 1000);
-                }}
+            <div
+              key={nanoid()}
+              className={`h-12 xl:h-24 rounded-md flex flex-col justify-center xl:justify-end items-center xl:pb-3 cursor-pointer ${textColor}`}
+              style={{ backgroundColor }}
+              onClick={() => {
+                navigator.clipboard.writeText(backgroundColor);
+                setIsCopied(scale);
+                setTimeout(() => setIsCopied(null), 1000);
+              }}
+            >
+              {scale === colorData.baseScale && (
+                <GoHeart className="text-2xl mb-1 hidden xl:block" />
+              )}
+              <p
+                className={`font-medium text-sm ${
+                  isCopied === scale && "hidden"
+                }`}
               >
-                {scale === colorData.baseScale && (
-                  <GoHeart className="text-2xl mb-1" />
-                )}
-                <p
-                  className={`font-medium text-sm ${
-                    isCopied === scale && "hidden"
-                  }`}
-                >
-                  {scale}
-                </p>
-                <p className={`text-xs ${isCopied === scale && "hidden"}`}>
-                  {backgroundColor.toUpperCase()}
-                </p>
-                {isCopied === scale && <p className="pt-3">Copied!</p>}
-              </div>
+                {scale}
+              </p>
+              <p className={`text-xs ${isCopied === scale && "hidden"}`}>
+                {backgroundColor.toUpperCase()}
+              </p>
+              {isCopied === scale && <p className="pt-3">Copied!</p>}
             </div>
           );
         })}

@@ -9,7 +9,7 @@ const ColorDisplay = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="w-full mx-6 mt-3.5">
+    <div className="w-full mx-4 md:mx-6 mt-3.5">
       <div className="flex items-center justify-between mb-2">
         <h2 className="text-2xl font-semibold">Color Scales</h2>
         <button
@@ -25,7 +25,7 @@ const ColorDisplay = () => {
             document.getElementById("portals")
           )}
       </div>
-      <div className="h-[62vh] overflow-y-auto pr-2 lg:pr-0">
+      <div className="h-[62vh] overflow-y-auto pr-1">
         <ColorScale />
         {state.secondaryColor.isAdded && <ColorScale colorType="secondary" />}
         {state.tertiaryColor.isAdded && <ColorScale colorType="tertiary" />}

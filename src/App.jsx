@@ -10,8 +10,8 @@ function App() {
     <ColorProvider>
       <Header />
       <main className="bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100">
-        <div className="flex border-b border-neutral-200 dark:border-neutral-700">
-          <div className="pt-4 pr-4 border-r border-neutral-200 dark:border-neutral-700">
+        <div className="md:flex border-b border-neutral-200 dark:border-neutral-700">
+          <div className="md:pt-4 md:pr-1 md:border-r border-neutral-200 dark:border-neutral-700">
             <ControlPanel />
           </div>
           <div className="flex-grow flex justify-center">
