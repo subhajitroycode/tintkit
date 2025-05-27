@@ -2,8 +2,6 @@ import { nanoid } from "nanoid";
 import { Card1, Card2, Card3, Card4, Card5, Card6, Card7 } from "./Cards";
 
 const CardContainer = () => {
-  // For desktop (lg+): original order [Card1, Card2, Card3, Card4, Card5, Card6, Card7]
-  // For tablet/mobile: swap Card2 and Card3 positions [Card1, Card3, Card2, Card4, Card5, Card6, Card7]
   const desktopCards = [Card1, Card2, Card3, Card4, Card5, Card6, Card7];
   const mobileCards = [Card1, Card3, Card2, Card4, Card5, Card6, Card7];
 

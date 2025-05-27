@@ -2,8 +2,8 @@ const Footer = () => {
   return (
     <footer className="bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-700 py-4">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
+        <div className="flex flex-col-reverse md:flex-row justify-between items-center">
+          <div className="mt-4 md:mt-0">
             <p className="text-sm text-neutral-600 dark:text-neutral-400">
               © {new Date().getFullYear()} tintkit. All rights reserved.
             </p>

@@ -10,7 +10,7 @@ import {
 
 const VisualContainer = () => {
   return (
-    <div className="mx-4 grid grid-cols-3 grid-rows-2 gap-6 h-[55rem]">
+    <div className="md:mx-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 ">
       <Visual1 />
       <Visual2 />
       <Visual3 />
