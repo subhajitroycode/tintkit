@@ -70,24 +70,24 @@ const ModalComponent = ({ onClose, color = "all" }) => {
           return colorTypes
             .map((colorType) => {
               const scale = getColorScale(colorType);
+              const colorName = colorState[`${colorType}Color`].name;
               return Object.entries(scale)
                 .map(([shade, value]) => {
                   if (code === "rgb") {
                     const { r, g, b } = hexToRGB(value);
-                    console.log(r * 255, g * 255, b * 255);
 
-                    return `--color-${colorType}-${shade}: rgb(${r * 255}, ${
+                    return `--color-${colorName}-${shade}: rgb(${r * 255}, ${
                       g * 255
                     }, ${b * 255});`;
                   } else if (code === "hsl") {
                     const { h, s, l } = hexToHSL(value);
-                    return `--color-${colorType}-${shade}: hsl(${Math.round(
+                    return `--color-${colorName}-${shade}: hsl(${Math.round(
                       h
                     )}, ${Math.round(s)}%, ${Math.round(l)}%);`;
                   } else if (code === "oklch") {
                     const { l, c, h } = hexToOKLCH(value);
-                    return `--color-${colorType}-${shade}: oklch(${l} ${c} ${h});`;
-                  } else return `--color-${colorType}-${shade}: ${value};`;
+                    return `--color-${colorName}-${shade}: oklch(${l} ${c} ${h});`;
+                  } else return `--color-${colorName}-${shade}: ${value};`;
                 })
                 .join("\n");
             })
@@ -96,7 +96,8 @@ const ModalComponent = ({ onClose, color = "all" }) => {
           return colorTypes
             .map((colorType) => {
               const scale = getColorScale(colorType);
-              return `'${colorType}': {\n${Object.entries(scale)
+              const colorName = colorState[`${colorType}Color`].name;
+              return `'${colorName}': {\n${Object.entries(scale)
                 .map(([shade, value]) => {
                   if (code === "rgb") {
                     const { r, g, b } = hexToRGB(value);
@@ -121,22 +122,23 @@ const ModalComponent = ({ onClose, color = "all" }) => {
         return `:root {\n${colorTypes
           .map((colorType) => {
             const scale = getColorScale(colorType);
+            const colorName = colorState[`${colorType}Color`].name;
             return Object.entries(scale)
               .map(([shade, value]) => {
                 if (code === "rgb") {
                   const { r, g, b } = hexToRGB(value);
-                  return `  --color-${colorType}-${shade}: rgb(${r * 255}, ${
+                  return `  --color-${colorName}-${shade}: rgb(${r * 255}, ${
                     g * 255
                   }, ${b * 255});`;
                 } else if (code === "hsl") {
                   const { h, s, l } = hexToHSL(value);
-                  return `  --color-${colorType}-${shade}: hsl(${Math.round(
+                  return `  --color-${colorName}-${shade}: hsl(${Math.round(
                     h
                   )}, ${Math.round(s)}%, ${Math.round(l)}%);`;
                 } else if (code === "oklch") {
                   const { l, c, h } = hexToOKLCH(value);
-                  return `  --color-${colorType}-${shade}: oklch(${l} ${c} ${h});`;
-                } else return `  --color-${colorType}-${shade}: ${value};`;
+                  return `  --color-${colorName}-${shade}: oklch(${l} ${c} ${h});`;
+                } else return `  --color-${colorName}-${shade}: ${value};`;
               })
               .join("\n");
           })
@@ -146,6 +148,7 @@ const ModalComponent = ({ onClose, color = "all" }) => {
     // If showing a single color
     else {
       const scale = getColorScale(selectedColor);
+      const colorName = colorState[`${selectedColor}Color`].name;
 
       if (activeTab === "tailwind") {
         if (tailwindVersion === "v4") {
@@ -153,24 +156,23 @@ const ModalComponent = ({ onClose, color = "all" }) => {
             .map(([shade, value]) => {
               if (code === "rgb") {
                 const { r, g, b } = hexToRGB(value);
-                console.log(r * 255, g * 255, b * 255);
 
-                return `--color-${selectedColor}-${shade}: rgb(${r * 255}, ${
+                return `--color-${colorName}-${shade}: rgb(${r * 255}, ${
                   g * 255
                 }, ${b * 255});`;
               } else if (code === "hsl") {
                 const { h, s, l } = hexToHSL(value);
-                return `--color-${selectedColor}-${shade}: hsl(${Math.round(
+                return `--color-${colorName}-${shade}: hsl(${Math.round(
                   h
                 )}, ${Math.round(s)}%, ${Math.round(l)}%);`;
               } else if (code === "oklch") {
                 const { l, c, h } = hexToOKLCH(value);
-                return `--color-${selectedColor}-${shade}: oklch(${l} ${c} ${h});`;
-              } else return `--color-${selectedColor}-${shade}: ${value};`;
+                return `--color-${colorName}-${shade}: oklch(${l} ${c} ${h});`;
+              } else return `--color-${colorName}-${shade}: ${value};`;
             })
             .join("\n");
         } else {
-          return `'${selectedColor}': {\n${Object.entries(scale)
+          return `'${colorName}': {\n${Object.entries(scale)
             .map(([shade, value]) => {
               if (code === "rgb") {
                 const { r, g, b } = hexToRGB(value);
@@ -194,18 +196,18 @@ const ModalComponent = ({ onClose, color = "all" }) => {
           .map(([shade, value]) => {
             if (code === "rgb") {
               const { r, g, b } = hexToRGB(value);
-              return `  --color-${selectedColor}-${shade}: rgb(${r * 255}, ${
+              return `  --color-${colorName}-${shade}: rgb(${r * 255}, ${
                 g * 255
               }, ${b * 255});`;
             } else if (code === "hsl") {
               const { h, s, l } = hexToHSL(value);
-              return `  --color-${selectedColor}-${shade}: hsl(${Math.round(
+              return `  --color-${colorName}-${shade}: hsl(${Math.round(
                 h
               )}, ${Math.round(s)}%, ${Math.round(l)}%);`;
             } else if (code === "oklch") {
               const { l, c, h } = hexToOKLCH(value);
-              return `  --color-${selectedColor}-${shade}: oklch(${l} ${c} ${h});`;
-            } else return `  --color-${selectedColor}-${shade}: ${value};`;
+              return `  --color-${colorName}-${shade}: oklch(${l} ${c} ${h});`;
+            } else return `  --color-${colorName}-${shade}: ${value};`;
           })
           .join("\n")}\n}`;
       }
