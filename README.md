@@ -172,6 +172,13 @@ If you find tintkit helpful, consider:
 - 💡 Suggesting new features
 - 🤝 Contributing to the codebase
 
+## Social Media
+Follow me on my social media
+- [LinkedIn](https://www.linkedin.com/in/subhajitroycode/)
+- [Instagram](https://www.instagram.com/subhajitroycode/)
+- [Threads](https://www.threads.net/subhajitroycode)
+- [Twitter/X](https://twitter.com/subhajitroycode)
+
 ---
 
 Made with ❤️ for designers and developers who love beautiful colors.
