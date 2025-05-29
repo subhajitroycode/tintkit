@@ -16,6 +16,9 @@ A simple and intuitive tool to create beautiful color scales for your design pro
 - **Responsive Design**: Works seamlessly on desktop and mobile devices
 - **One-Click Copy**: Click any color to copy its hex value to clipboard
 
+## Live Demo
+Check out the live demo at [tintkit](https://tintkit.vercel.app)
+
 ## Getting Started
 
 ### Prerequisites
